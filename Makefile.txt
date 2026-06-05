@@ -1,0 +1,17 @@
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra
+
+SRCS = main.cpp Terminal.cpp Entry.cpp Directory.cpp SingleLineFile.cpp MultiLineFile.cpp
+OBJS = $(SRCS:.cpp=.o)
+TARGET = terminal
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS) $(TARGET)
